@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Multiverse Project</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="custom-styles.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid main-container">
+      <nav class="navigation-ribbon">
+        <ul>
+          <li><a href="https://hoberla.github.io">Home</a></li>
+          <li><a href="https://hoberla.github.io/portfolio">Portfolio</a></li>
+          <li>
+            <a href="https://osf.io/dc5nk/">OSF Repository</a>
+          </li>
+        </ul>
+      </nav>
+
+      <header>
+        <h1 class="title">The Multiverse Project</h1>
+        <h2 class="subtitle">
+          Examining a Covariate Multiverse Informed by Crowdsourced and
+          Multiverse Analyses of the ‘Many Analysts, One Dataset’ Study
+        </h2>
+      </header>
+
+      <main class="tabs-container">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#introduction" data-toggle="tab">Introduction</a>
+          </li>
+          <li>
+            <a href="#analysis" data-toggle="tab">The Multiverse Analysis</a>
+          </li>
+          <li><a href="#visualisation" data-toggle="tab">Visualisations</a></li>
+          <li><a href="#discussion" data-toggle="tab">Discussion</a></li>
+          <li><a href="#references" data-toggle="tab">References</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="introduction" class="tab-pane active">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#intro-background" data-toggle="tab">Background</a>
+              </li>
+              <li>
+                <a href="#intro-rq" data-toggle="tab">Research Questions</a>
+              </li>
+              <li>
+                <a href="#intro-findings" data-toggle="tab">Key Findings</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="intro-background" class="tab-pane active">
+                <h3>The Garden of Forking Paths</h3>
+                <p>
+                  Published psychological research can appear to be a
+                  streamlined and logical process, but behind the scenes, it is
+                  filled with complex decisions. From generating a research
+                  question to cleaning data and interpreting results,
+                  researchers face what has been called a "garden of forking
+                  paths" <a href="#ref-gelman2013" class="ref-link">[1]</a>.
+                  Each decision made—such as which variables to control for or
+                  how to handle outliers—creates an exponentially growing number
+                  of alternative analytical pathways that are often hidden in
+                  the final publication.
+                </p>
+                <p>
+                  These "researcher degrees of freedom"
+                  <a href="#ref-simmons2016" class="ref-link">[2]</a> can lead
+                  to an over-reporting of statistically significant results and
+                  an under-reporting of non-significant ones, whether
+                  intentionally or not. Practices like "p-hacking"—selectively
+                  reporting analyses that yield significant results—or
+                  "HARKing"—forming a hypothesis after the results are known
+                  <a href="#ref-kerr1998" class="ref-link">[3]</a>—can exploit
+                  this flexibility. Such issues are thought to be a major
+                  contributor to the replication crisis in psychology, where a
+                  large proportion of published findings cannot be reproduced,
+                  likely because the reported effects were false positives to
+                  begin with <a href="#ref-osc2015" class="ref-link">[4]</a>.
+                </p>
+                <p>
+                  While Open Science principles like pre-registration and data
+                  sharing aim to curb these problems, they have practical
+                  limitations and don't solve a more fundamental issue:
+                  different researchers making perfectly justifiable and
+                  transparent choices can still arrive at different conclusions.
+                  This was demonstrated in crowdsourced studies where dozens of
+                  analytical teams were given the same dataset and research
+                  question but produced a wide variety of results
+                  <a href="#ref-silberzahn2018" class="ref-link">[5]</a>. This
+                  suggests that a degree of idiosyncratic variability is simply
+                  inherent to the scientific process.
+                </p>
+                <p>
+                  This context led to the development of analytical concepts
+                  like multiverse analysis (MVA); instead of choosing just one
+                  analytical path, a multiverse analysis addresses the problem
+                  by running every possible combination of a set of justifiable
+                  choices to create a vast landscape of results. By inspecting
+                  this “multiverse” of outcomes, researchers can assess whether
+                  a hypothesised effect is stable and robust or if it only
+                  appears under a narrow set of analytical conditions. This
+                  project implements the multiverse approach, learning from both
+                  a previously crowdsourced analysis and a partial
+                  implementation of the multiverse analysis, to provide novel
+                  insights into the results of the analysis and the strenghts,
+                  weaknesses, and the potential of multiverse analysis in
+                  general.
+                </p>
+              </div>
+              <div id="intro-rq" class="tab-pane">
+                <h3>What are we looking at?</h3>
+                <ol>
+                  <li>
+                    Across all possible models, how much of the variation in red
+                    cards can be explained by the included predictors (i.e.,
+                    what is the <strong>marginal variance explained</strong>)?
+                  </li>
+                  <li>
+                    When we group the models by which predictor they contain,
+                    what is the <strong>average performance</strong> for each
+                    group?
+                  </li>
+                  <li>
+                    Focusing on the models that include player skin tone, how do
+                    the <strong>odds ratios</strong> and their
+                    <strong>statistical significance</strong> compare to the
+                    findings from previous crowdsourced and multiverse analyses
+                    of this dataset?
+                  </li>
+                </ol>
+              </div>
+              <div id="intro-findings" class="tab-pane">
+                <h3>Key takeaways</h3>
+                <ul>
+                  <li>
+                    A <strong>consistently significant</strong> link was found
+                    between darker skin tone and receiving a red card after
+                    statistical issues like overfitting were corrected.
+                  </li>
+                  <li>
+                    However, the models that show this effect have very
+                    <strong>low explanatory power</strong>, meaning they don't
+                    do a good job of predicting the outcome in reality.
+                  </li>
+                  <li>
+                    This highlights that a finding can be
+                    <strong
+                      >statistically significant without being practically
+                      meaningful</strong
+                    >.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="analysis" class="tab-pane">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#analysis-method" data-toggle="tab">The Method</a>
+              </li>
+              <li>
+                <a href="#analysis-dataset" data-toggle="tab">The Dataset</a>
+              </li>
+              <li>
+                <a href="#analysis-code" data-toggle="tab">Implementation</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="analysis-method" class="tab-pane active">
+                <h3>What is a Multiverse Analysis?</h3>
+                <p>
+                  A multiverse analysis (MVA) is a computational strategy
+                  designed to address the problems of "researcher degrees of
+                  freedom" and the "garden of forking paths". Instead of hiding
+                  the countless analytical choices a researcher can make, MVA
+                  embraces them by running <em>every</em> possible combination
+                  of a set of justifiable choices. This creates a "multiverse"
+                  of results, allowing us inspect patterns in findings.
+                </p>
+                <h4>Previous Analyses of this Dataset</h4>
+                <p>
+                  The dataset used in this project has been analyzed before:
+                </p>
+                <ol>
+                  <li>
+                    The <strong>original crowdsourced study</strong> showed that
+                    29 different expert teams produced a wide range of results,
+                    highlighting the problem of idiosyncratic researcher
+                    choices.
+                  </li>
+                  <li>
+                    <strong>Previous multiverse analyses</strong> also explored
+                    this dataset but focused on different aspects, such as a
+                    more constrained set of variables or comparing different
+                    types of statistical models. This project builds on that
+                    work by conducting a more comprehensive covariate multiverse
+                    with a novel focus on model performance.
+                  </li>
+                </ol>
+              </div>
+              <div id="analysis-dataset" class="tab-pane">
+                <h3>Original Data</h3>
+                <p>
+                  The data comes from a sports statistics company and includes
+                  146,028 unique interactions between 2,053 professional
+                  football players and 3,147 referees from the top European
+                  leagues in the 2012-2013 season. A crucial data cleaning step
+                  removed "contaminating" referees (those not part of the target
+                  season).
+                </p>
+
+                <h4>Codebook (Selected Variables)</h4>
+
+                <h5>Original Variables</h5>
+                <ul>
+                  <li><code>playerShort</code>: Unique player ID</li>
+                  <li><code>club</code>: Player's club</li>
+                  <li><code>birthday</code>: Player's date of birth</li>
+                  <li>
+                    <code>height</code> / <code>weight</code>: Player's height
+                    and weight
+                  </li>
+                  <li><code>position</code>: Player's on-field position</li>
+                  <li>
+                    <code>games</code>: Number of games in the player-referee
+                    dyad
+                  </li>
+                  <li>
+                    <code>redCards</code>: Number of red cards given by the
+                    referee to the player
+                  </li>
+                  <li>
+                    <code>rater1</code> / <code>rater2</code>: Skin tone ratings
+                    from two independent raters
+                  </li>
+                  <li>
+                    <code>refCountry</code>: Unique ID for the referee's country
+                  </li>
+                  <li>
+                    <code>meanIAT</code>: Mean implicit bias score for the
+                    referee's country
+                  </li>
+                </ul>
+
+                <h5>Modified Variables</h5>
+                <ul>
+                  <li>
+                    <code>avrate</code>: The average of the two skin tone
+                    ratings.
+                  </li>
+                  <li>
+                    <code>age</code>: Player's age as of a specific date during
+                    the season.
+                  </li>
+                  <li>
+                    <code>position</code> (collapsed): Player positions grouped
+                    into four main categories (Goalkeeper, Back, Middle, Front).
+                  </li>
+                  <li>
+                    <code>redcard</code> (dichotomous): Red card outcome
+                    converted to a binary (Yes/No) variable.
+                  </li>
+                </ul>
+
+                <br />
+                <div align="center">
+                  <a
+                    href="https://osf.io/esjpx/wiki"
+                    class="btn btn-primary"
+                    style="background-color: #d69e2e; border-color: #d69e2e"
+                    >View Full Codebook on OSF</a
+                  >
+                </div>
+              </div>
+              <div id="analysis-code" class="tab-pane">
+                <h3>Multiverse coding</h3>
+                <p>
+                  The analysis was conducted in R (version 4.1.2), mainly
+                  utilising <code>tidyverse</code> (data wrangling) and
+                  <code>lme4</code> (statistical analyses). Multilevel logistic
+                  regression modelling was selected to analyse the data as it
+                  was one of the preferred approaches in the crowdsourced
+                  project and its properties were sutiable for the intended
+                  model.
+                </p>
+                <br />
+
+                <div align="center">
+                  <a
+                    href="https://osf.io/aek4n/wiki"
+                    class="btn btn-primary"
+                    style="background-color: #d69e2e; border-color: #d69e2e"
+                    >View Full Technical Specifications on OSF</a
+                  >
+                </div>
+                <br />
+
+                <h4>Snippet 1: Generating All Possible Models</h4>
+                <p>
+                  To create the multiverse, we first defined a list of 10
+                  potential covariates. The R code below then uses the
+                  <code>expand.grid()</code> function to generate every possible
+                  combination of these covariates, resulting in a master list of
+                  1,023 unique model formulas to be tested.
+                </p>
+                <pre><code class="r">
+# Create list of potential covariates
+covariates_list <- list(avrate = c(NA, 'avrate'),
+                        position = c(NA, 'position'),
+                        yellowCards = c(NA, 'yellowCards'),
+                        height = c(NA, 'height'),
+                        weight = c(NA, 'weight'),
+                        club = c(NA, 'club'),
+                        age = c(NA, 'age'),
+                        meanIAT = c(NA, 'meanIAT'),
+                        refCountry = c(NA, 'refCountry'),
+                        victories = c(NA, 'victories'))
+
+# Creating a list of all possible combinations
+covariates_list <- expand.grid(covariates_list) 
+
+# Remove an empty row (no covariates)
+covariates_list <- covariates_list[-1,]
+                    </code></pre>
+
+                <h4>Snippet 2: Running the Analysis</h4>
+                <p>
+                  With the 1,023 unique model formulas generated, the next step
+                  was to run a multilevel logistic regression for each one. The
+                  R code below shows the <code>for</code> loop that iterates
+                  through every formula and runs the model using the
+                  <code>glmer()</code> function.
+                </p>
+                <pre><code class="r">
+# Starting the loop
+for(i in 1:nrow(covariate_grid)) {
+  
+  # Each row of covariate_grid is now used as a formula for the regression
+  output <- tryCatch(glmer(data = redcard,
+                           formula = paste('redCards ~ ',
+                                           covariate_grid[i, 'formula'], 
+                                           '+ (1 | playerShort) + (1 | refNum)'),
+                           family = binomial(link="logit"),
+                           control = glmerControl(optimizer = "bobyqa"),
+                           nAGQ = 0),
+                     
+                     error = function(e) {
+                       skip_to_next <<- TRUE
+                     })
+  
+  if(skip_to_next) { next }
+  
+  # ... code to extract results (R2, ORs, etc.) would follow ...
+}
+                    </code></pre>
+
+                <br />
+                <div align="center">
+                  <a
+                    href="https://osf.io/esjpx"
+                    class="btn btn-primary"
+                    style="background-color: #d69e2e; border-color: #d69e2e"
+                    >View Full Code on OSF</a
+                  >
+                </div>
+                <div id="analysis-example" class="tab-pane">
+                  <h3>A Single Universe: Model 129</h3>
+                  <p>
+                    To make the process concrete, the code from Snippet 2
+                    dynamically builds the regression formula. For model
+                    <strong>129</strong>, this formula becomes:
+                  </p>
+                  <pre><code>redCards ~ avrate+meanIAT + (1 | playerShort) + (1 | refNum)</code></pre>
+                  <p>
+                    This tells the model to predict red cards from skin tone
+                    (`avrate`) and the referee's country's implicit bias
+                    (`meanIAT`), while accounting for the nested data structure.
+                    Below is the simplified fixed-effects output for this
+                    specific model.
+                  </p>
+
+                  <table class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Term</th>
+                        <th>Odds Ratio</th>
+                        <th>Lower CI</th>
+                        <th>Upper CI</th>
+                        <th>p-value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>avrate (Skin Tone)</strong></td>
+                        <td>1.21</td>
+                        <td>0.97</td>
+                        <td>1.52</td>
+                        <td>0.092</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>
+                    <em
+                      >Note: Full table including the intercept and other
+                      parameters is omitted for clarity.</em
+                    >
+                  </p>
+
+                  <h4>Breaking Down the Function</h4>
+                  <ul>
+                    <li>
+                      <strong
+                        ><code>family = binomial(link="logit")</code></strong
+                      >: This specifies a <strong>logistic regression</strong>,
+                      the correct model for a binary outcome (a player either
+                      received a red card or did not).
+                    </li>
+                    <li>
+                      <strong
+                        ><code
+                          >control = glmerControl(optimizer = "bobyqa")</code
+                        ></strong
+                      >: This instructs the model to use the `bobyqa` algorithm
+                      to find the best-fitting solution. This optimizer is
+                      well-suited for complex models as it does not require
+                      computationally intensive derivatives to find the optimal
+                      result efficiently.<a href="#ref-lme4" class="ref-link"
+                        >[6]</a
+                      >
+                    </li>
+                    <li>
+                      <strong><code>nAGQ = 0</code></strong
+                      >: This is a setting that manages the trade-off between
+                      speed and precision. For this project, a
+                      <strong
+                        >faster, less precise estimation method was chosen to
+                        save computational power</strong
+                      >, a practical necessity for running over 1,000 models.<a
+                        href="#ref-lme4"
+                        class="ref-link"
+                        >[6]</a
+                      >
+                    </li>
+                    <li>
+                      <strong
+                        ><code>error = function(e)</code> and
+                        <code>if(skip_to_next)</code></strong
+                      >: This is a crucial
+                      <strong>error handling</strong> mechanism. If a model
+                      fails to compute, this code "catches" the error and tells
+                      the loop to simply skip to the next model, preventing the
+                      entire analysis from crashing.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="visualisation" class="tab-pane">
+            <h3>Figure 1: Full Multiverse Performance</h3>
+            <p>
+              This scatter plot displays the marginal variance explained (R²M)
+              by all 1,023 models in the multiverse. The plot reveals two
+              instances where the variance explained increases noticeably; these
+              are caused by the inclusion of the players' club and referees'
+              country covariates, which was interpreted as evidence of
+              overfitting.
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/model_perf_plot.svg"
+              alt="Full Multiverse Performance Plot"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>Figure 2: Multiverse Performance Without Overfitting</h3>
+            <p>
+              This plot shows the marginal variance explained (R²M) for the
+              subset of 256 models after removing the two covariates suspected
+              of causing overfitting. This visualization demonstrates that, with
+              overfitting eliminated, the models explain a modest amount of
+              variance (less than 6%).
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/model_perf_noncat_plot.svg"
+              alt="Multiverse Performance Without Overfitting"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>Figure 3: Performance of Skin-Tone-Inclusive Models</h3>
+            <p>
+              This plot is a subset of the full multiverse, displaying the
+              performance for the 512 models that specifically include averaged
+              players' skin tone rating as a predictor.
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avrate_perf_plot.svg"
+              alt="Performance of Skin-Tone-Inclusive Models"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>
+              Figure 4: Performance of Skin-Tone-Inclusive Models Without
+              Overfitting
+            </h3>
+            <p>
+              This plot displays the 128 models from Figure 3 after the two
+              overfitting covariates have been removed, confirming that the
+              remaining models have modest predictive power.
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avrate_noncat_plot.svg"
+              alt="Performance of Skin-Tone-Inclusive Models Without Overfitting"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>Figure 5: Average Model Performance by Covariate (Full)</h3>
+            <p>
+              This visualization uses violin plots to show the distribution of
+              model performance grouped by each of the ten covariates. The plots
+              for Country and Club are dramatically different, clustering at
+              much higher values.
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avg_perf_plot.svg"
+              alt="Average Model Performance by Covariate"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>
+              Figure 6: Average Model Performance by Covariate (Without
+              Overfitting)
+            </h3>
+            <p>
+              This is the same visualization as Figure 5 but based only on the
+              models where players' club and referees' country have been
+              excluded. No single covariate dramatically outperforms the others.
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avg_perf_plot_noncat.svg"
+              alt="Average Model Performance by Covariate Without Overfitting"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>Figure 7: Distribution of Skin Tone ORs (Full)</h3>
+            <p>
+              This density plot shows the bimodal (two-peaked) distribution of
+              odds ratios (ORs) for the effect of skin tone from all 512 models
+              that included it.
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avrate_or_hist.svg"
+              alt="Distribution of Skin Tone ORs"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>Figure 8: Skin Tone ORs with Confidence Intervals (Full)</h3>
+            <p>
+              This plot displays each of the 512 odds ratios as a point, ordered
+              by size, with shaded areas representing their 95% confidence
+              intervals. 46.5% of the estimates were statistically significant
+              (blue).
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avrate_orplot.svg"
+              alt="Skin Tone ORs with Confidence Intervals"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>
+              Figure 9: Distribution of Skin Tone ORs (Without Overfitting)
+            </h3>
+            <p>
+              This density plot shows the distribution for the 128 models
+              remaining after removing overfitting. The distribution is much
+              more compact and the median OR is higher at 1.33.
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avrate_or_hist_cont.svg"
+              alt="Distribution of Skin Tone ORs Without Overfitting"
+              style="width: 100%"
+            />
+            <hr />
+            <h3>
+              Figure 10: Skin Tone ORs with Confidence Intervals (Without
+              Overfitting)
+            </h3>
+            <p>
+              This plot shows the odds ratios for the 128 "cleaned" models.
+              After eliminating overfitting, 92.2% of the estimates for the
+              effect of skin tone are statistically significant (blue).
+            </p>
+            <img
+              src="https://hoberla.github.io/multiverse/img/avrate_orplot_cont.svg"
+              alt="Skin Tone ORs with Confidence Intervals Without Overfitting"
+              style="width: 100%"
+            />
+          </div>
+
+          <div id="discussion" class="tab-pane">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#discussion-conclusions" data-toggle="tab"
+                  >Conclusions</a
+                >
+              </li>
+              <li>
+                <a href="#discussion-limitations" data-toggle="tab"
+                  >Limitations</a
+                >
+              </li>
+              <li>
+                <a href="#discussion-future" data-toggle="tab"
+                  >Future Directions</a
+                >
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="discussion-conclusions" class="tab-pane active">
+                <h3>Statistical Significance vs. Practical Meaning</h3>
+                <p>
+                  The multiverse analysis shows a
+                  <strong>consistently significant</strong> link between darker
+                  skin tone and red cards after correcting for overfitting.
+                  However, the very low explanatory power (marginal R²) of these
+                  models suggests that this effect, while statistically real, is
+                  <strong>practically weak</strong>. It's a small piece of a
+                  much larger puzzle that the models don't capture.
+                </p>
+                <p>
+                  The core conclusion is that researchers and the public should
+                  be cautious. A statistically significant finding doesn't
+                  automatically mean it's a powerful or important real-world
+                  effect. Looking at model performance is just as crucial.
+                </p>
+              </div>
+              <div id="discussion-limitations" class="tab-pane">
+                <h3>What This Analysis Doesn't Cover</h3>
+                <ul>
+                  <li>
+                    <strong>Computational Constraints:</strong> Due to a lack of
+                    sufficient computational power, not all possible covariates
+                    or their interactions (like Body Mass Index) could be
+                    included in the multiverse.
+                  </li>
+                  <li>
+                    <strong>Model Fit Statistics:</strong> Logistic regression
+                    models don't have a standard R² value. The "pseudo-R²" used
+                    is a helpful approximation but isn't a perfect measure of
+                    model fit.
+                  </li>
+                </ul>
+              </div>
+              <div id="discussion-future" class="tab-pane">
+                <h3>MVA as an Evolutionary Tool</h3>
+                <p>
+                  Multiverse Analysis is a powerful exploratory tool for
+                  checking the stability of findings, but it isn't a magic
+                  bullet. Its results are only as good as the initial choices
+                  made by the researcher. This highlights the need for the
+                  scientific community to establish "principles of good
+                  practice" to guide new users.
+                </p>
+                <p>
+                  Ultimately, MVA represents an "evolution rather than
+                  revolution" in data analysis. Its focus on the distribution of
+                  effects, rather than a single p-value, encourages a more
+                  nuanced understanding of results and helps move the field
+                  beyond a simple "significant/not-significant" mindset.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="references" class="tab-pane">
+            <h3>References</h3>
+            <ol>
+              <li id="ref-gelman2013">
+                <p>
+                  Gelman, A., & Loken, E. (2013). The garden of forking paths:
+                  Why multiple comparisons can be a problem, even when there is
+                  no "fishing expedition" or "p-hacking" and the research
+                  hypothesis was posited ahead of time.
+                  <em>Department of Statistics, Columbia University.</em>
+                </p>
+              </li>
+              <li id="ref-simmons2016">
+                <p>
+                  Simmons, J. P., Nelson, L. D., & Simonsohn, U. (2016).
+                  False-positive psychology: Undisclosed flexibility in data
+                  collection and analysis allows presenting anything as
+                  significant. In A. E. Kazdin (Ed.),
+                  <em
+                    >Methodological issues and strategies in clinical
+                    research</em
+                  >
+                  (pp. 547-555). American Psychological Association.
+                </p>
+              </li>
+              <li id="ref-kerr1998">
+                <p>
+                  Kerr, N. L. (1998). HARKing: Hypothesizing after the results
+                  are known.
+                  <em>Personality and social psychology review, 2</em>(3),
+                  196-217.
+                </p>
+              </li>
+              <li id="ref-osc2015">
+                <p>
+                  Open Science Collaboration. (2015). Estimating the
+                  reproducibility of psychological science.
+                  <em>Science, 349</em>(6251).
+                </p>
+              </li>
+              <li id="ref-silberzahn2018">
+                <p>
+                  Silberzahn, R., Uhlmann, E. L., Martin, D. P., et al. (2018).
+                  Many analysts, one data set: Making transparent how variations
+                  in analytic choices affect results.
+                  <em
+                    >Advances in Methods and Practices in Psychological Science,
+                    1</em
+                  >(3), 337-356.
+                </p>
+              </li>
+              <li id="ref-lme4">
+                <p>
+                  Bates, D., Maechler, M., Bolker, B., & Walker, S. (2025).
+                  <em>lme4: Linear mixed-effects models using Eigen and S4</em>.
+                  R package version 1.1-37.
+                  <a
+                    href="https://cran.r-project.org/web/packages/lme4/lme4.pdf"
+                    >https://cran.r-project.org/web/packages/lme4/lme4.pdf</a
+                  >
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <ul>
+          <li>&copy; Ondrej Hoberla (2022)</li>
+        </ul>
+        <div class="social-icons">
+          <a
+            href="https://link.hoberla.eu/linkedin/"
+            target="_blank"
+            aria-label="LinkedIn Profile"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://link.hoberla.eu/github/"
+            target="_blank"
+            aria-label="GitHub Profile"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://link.hoberla.eu/bluesky/"
+            target="_blank"
+            aria-label="Bluesky Profile"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 226">
+              <path
+                d="M55.491 15.172c29.35 22.035 60.917 66.712 72.509 90.686c11.592-23.974 43.159-68.651 72.509-90.686C221.686-.727 256-13.028 256 26.116c0 7.818-4.482 65.674-7.111 75.068c-9.138 32.654-42.436 40.983-72.057 35.942c51.775 8.812 64.946 38 36.501 67.187c-54.021 55.433-77.644-13.908-83.696-31.676c-1.11-3.257-1.63-4.78-1.637-3.485c-.008-1.296-.527.228-1.637 3.485c-6.052 17.768-29.675 87.11-83.696 31.676c-28.445-29.187-15.274-58.375 36.5-67.187c-29.62 5.041-62.918-3.288-72.056-35.942C4.482 91.79 0 33.934 0 26.116C0-13.028 34.314-.727 55.491 15.172"
+              />
+            </svg>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="custom-scripts.js"></script>
+  </body>
+</html>

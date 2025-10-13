@@ -1,0 +1,203 @@
+/* ==========================================================================
+   1. Global Styles
+   ========================================================================== */
+
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+  background-color: #2d3748; /* Dark Slate Grey Background */
+  color: #1a202c; /* Dark text for content areas */
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   2. Layout Styles
+   ========================================================================== */
+
+.main-container {
+  max-width: 1320px;
+  margin: 0 auto 20px auto; 
+  background-color: #f7fafc; /* Light Cream Content Area */
+  padding: 20px 40px;        
+  border: 1px solid #4a5568; /* Slightly lighter border */
+  border-radius: 5px;
+}
+
+.navigation-ribbon {
+  width: 100%;
+  background-color: #f7fafc;
+  padding: 15px 0;
+  text-align: center;
+  margin-bottom: 30px;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   3. Typography & Text Styles
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c5d63; /* Deep Teal for Headers */
+}
+
+h1 { font-size: 34px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+
+h1.title {
+  font-size: 38px;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2.subtitle {
+  font-size: 34px;
+  text-align: center;
+  color: #718096; /* Muted grey for subtitle */
+}
+
+/* ==========================================================================
+   4. Component Styles (Navigation, Code, Tabs)
+   ========================================================================== */
+
+/* --- Navigation Ribbon --- */
+.navigation-ribbon ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-ribbon li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.navigation-ribbon a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 0;
+  position: relative;
+  color: #2c5d63; /* Deep Teal */
+}
+
+.navigation-ribbon a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #d69e2e; /* Gold Accent on hover */
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.navigation-ribbon a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* --- Code Blocks --- */
+pre {
+  background-color: #edf2f7; /* Lighter grey for code background */
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+  white-space: pre-wrap;
+}
+
+/* --- Tabsets --- */
+.nav-tabs > li > a {
+  color: #2c5d63; /* Deep Teal for tab links */
+  font-weight: bold;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #1a202c;
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-bottom-color: transparent;
+}
+
+.tab-content {
+    padding-top: 20px;
+}
+
+/* ==========================================================================
+   6. Footer Styles
+   ========================================================================== */
+
+.site-footer {
+  width: 100%;
+  background-color: #f7fafc;
+  padding: 20px 0;
+  text-align: center; 
+  border-top: 1px solid #dddddd;
+  margin-top: 30px;
+  color: #555555;
+}
+
+.site-footer p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.site-footer ul {
+  list-style-type: none;
+  margin: 0; 
+  padding: 0; 
+}
+
+.site-footer li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.site-footer a {
+  text-decoration: none;
+  color: #337ab7;
+  font-size: 14px;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. Social Media Icons (Footer)
+   ========================================================================== */
+
+.social-icons {
+  text-align: center;
+  margin-top: 15px; 
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 10px; 
+}
+
+.social-icons svg {
+  width: 24px; 
+  height: 24px;
+  fill: #555555; 
+  transition: fill 0.2s ease-in-out; 
+}
+
+.social-icons a:hover svg {
+  fill: #337ab7; 
+}
